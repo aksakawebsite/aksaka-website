@@ -9,7 +9,7 @@ export default function LandingPage() {
             <Navbar />
 
             {/* Section 1: Hero */}
-            <section className="container mx-auto px-4 py-12 md:py-20 lg:py-28">
+            <section className="container mx-auto px-4 pt-28 pb-12 md:pt-32 md:pb-20 lg:pt-40 lg:pb-28">
                 <div className="flex flex-col-reverse lg:flex-row items-center gap-10">
                     {/* Left: Content */}
                     <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
