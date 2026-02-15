@@ -3,20 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Quiz extends Model
 {
-    protected $table = 'quizzes';
-
     protected $fillable = [
         'program_id',
         'title',
-        'gform_url',
         'description',
+        'gform_url',
         'order',
     ];
 
-    public function program()
+    public function program(): BelongsTo
     {
         return $this->belongsTo(Program::class);
     }
