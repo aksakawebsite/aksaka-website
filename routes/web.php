@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use Laravel\Fortify\Features;
 
 Route::get('/', function () {
     return Inertia::render('LandingPage');
@@ -19,5 +18,3 @@ Route::get('/tailwind-demo', function () {
 Route::get('/test-navbar-react', function () {
     return Inertia::render('TestNavbar');
 })->name('test.navbar');
-
-require __DIR__ . '/settings.php';
