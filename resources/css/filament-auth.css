@@ -1,0 +1,296 @@
+/* Custom Auth Pages Styles for Aksaka - Matched to React AuthLayout */
+
+/* Base layout for auth pages */
+.fi-simple-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* AuthLayout Gradient Background */
+    background: linear-gradient(
+        135deg,
+        #d2b165 0%,
+        #c49a3b 50%,
+        #8b6914 100%
+    ) !important;
+}
+
+/* Remove decorative elements from previous themes */
+.fi-simple-layout::before,
+.fi-simple-layout::after,
+.fi-panel-member .fi-simple-layout::after,
+.fi-panel-admin .fi-simple-page-content::before {
+    display: none !important;
+}
+
+.fi-simple-main-ctn {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem !important; /* matches p-6 */
+}
+
+@media (min-width: 768px) {
+    .fi-simple-main-ctn {
+        padding: 2.5rem !important; /* matches md:p-10 */
+    }
+}
+
+/* Base Card Styling (matches .rounded-2xl .bg-white .shadow-xl) */
+/* Style the Filament main container to eliminate the black background completely */
+.fi-simple-main {
+    background: white !important;
+    border: none !important;
+    border-radius: 1rem !important; /* rounded-2xl */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important; /* shadow-xl */
+    padding: 2rem !important; /* matches p-8 */
+    position: relative;
+    overflow: hidden;
+    width: 100% !important;
+    max-width: 28rem !important; /* max-w-md */
+    margin: 0 auto !important;
+    --tw-ring-color: transparent !important;
+    --tw-ring-shadow: 0 0 transparent !important;
+}
+
+/* Remove previous fallback container styles */
+.fi-simple-page-content {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+}
+
+/* Ensure body dark mode doesn't affect the card text */
+.dark .fi-simple-main, .dark .fi-simple-main * {
+    color: inherit;
+}
+.dark .fi-simple-main {
+    color: #111827 !important;
+}
+
+/* Header styling */
+.fi-simple-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.fi-simple-header-logo {
+    margin-bottom: 0;
+}
+
+.fi-simple-header-logo img {
+    height: 3rem !important; /* h-12 */
+    filter: none !important;
+}
+
+/* Hide standard Filament page heading. We use renderHook instead. */
+.fi-simple-header-heading {
+    display: none !important;
+}
+.fi-simple-header-subheading {
+    display: none !important;
+}
+
+/* Custom elements from render hooks (Matching React Auth Layout) */
+.auth-custom-header {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Adjust title styles to match text-2xl font-bold text-[#8B6914] */
+.auth-custom-header h2 {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #8b6914 !important;
+    letter-spacing: normal !important;
+    margin: 0 !important;
+    background: none !important;
+    -webkit-text-fill-color: #8b6914 !important;
+}
+
+/* Remove emojis from Admin/Member specific sections since React layout doesn't use them */
+.auth-custom-header h2::before {
+    display: none !important;
+}
+
+/* Adjust description to match text-sm text-gray-600 */
+.auth-custom-header p {
+    color: #4b5563 !important; /* text-gray-600 */
+    font-size: 0.875rem !important; /* text-sm */
+    margin: 0 !important;
+}
+
+/* Form styling (matches flex flex-col gap-6 and grid gap-5) */
+.fi-fo-field-wrp {
+    margin-bottom: 1.25rem !important;
+}
+
+.fi-fo-field-wrp-label {
+    color: #374151 !important; /* text-gray-700 */
+    font-weight: 500 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Force dark mode labels to match */
+.dark .fi-fo-field-wrp-label {
+    color: #374151 !important;
+}
+
+/* Match generic Input component */
+.fi-input-wrp {
+    background: white !important;
+    border: 1px solid #d1d5db !important; /* border-gray-300 */
+    border-radius: 0.5rem !important; /* rounded-lg */
+    box-shadow: none !important;
+    transition: all 0.2s ease;
+}
+
+.fi-input-wrp:focus-within {
+    border-color: #c49a3b !important;
+    box-shadow:
+        0 0 0 1px #c49a3b,
+        0 0 0 3px rgba(196, 154, 59, 0.2) !important;
+}
+
+.fi-input {
+    background: transparent !important;
+    color: #111827 !important; /* text-gray-900 */
+    padding: 0.5rem 0.75rem !important;
+}
+
+.fi-input::placeholder {
+    color: #9ca3af !important; /* text-gray-400 */
+}
+
+/* Checkbox styling */
+.fi-checkbox-input {
+    border-color: #d1d5db !important;
+    border-radius: 0.25rem !important;
+    color: #c49a3b !important;
+}
+
+.fi-checkbox-input:checked {
+    background-color: #c49a3b !important;
+    border-color: #c49a3b !important;
+}
+
+.fi-fo-field-wrp-label[for*='remember'] {
+    color: #4b5563 !important; /* text-gray-600 */
+    font-weight: 400 !important;
+}
+
+/* Button styling - bg-[#C49A3B] text-white rounded-lg hover:bg-[#B08A30] */
+.fi-btn-primary {
+    background: #c49a3b !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 0.5rem !important;
+    font-weight: 500 !important;
+    padding: 0.75rem 1rem !important; /* py-3 equivalent */
+    transition: background-color 0.3s ease !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-shadow: none !important;
+}
+
+.fi-btn-primary:hover {
+    background: #b08a30 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Link styling - text-sm text-[#C49A3B] hover:text-[#8B6914] */
+.fi-link {
+    color: #c49a3b !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+    transition: color 0.2s ease !important;
+}
+
+.fi-link:hover {
+    color: #8b6914 !important;
+}
+
+/* Custom footer & dividers matches auth-simple-layout */
+.auth-custom-footer {
+    margin-top: 1.5rem;
+    padding-top: 0;
+    border-top: none !important;
+    text-align: center;
+}
+
+.auth-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #4b5563 !important;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+.auth-back-link:hover {
+    color: #111827 !important;
+    transform: none !important;
+}
+
+.auth-copyright {
+    display: none; /* Removed copyright from visual matching react */
+}
+
+/* Divider if exists */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e5e7eb !important; /* border-gray-200 */
+}
+
+.auth-divider span {
+    padding: 0 1rem;
+    color: #4b5563 !important; /* text-gray-600 */
+    font-size: 0.875rem !important; /* text-sm */
+    text-transform: none !important;
+    letter-spacing: normal !important;
+}
+
+/* Admin panel text adjustment under link */
+.fi-panel-admin .auth-custom-footer p {
+    color: #4b5563 !important; /* text-gray-600 */
+    font-size: 0.875rem !important;
+    margin-bottom: 1rem;
+}
+
+/* Reset specific dark mode filament overwrites */
+.dark .fi-simple-page-content {
+    background-color: white !important;
+    color: #111827 !important;
+}

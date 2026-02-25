@@ -1,7 +1,6 @@
 import { Form, Head } from '@inertiajs/react';
 import InputError from '@/components/input-error';
 import TextLink from '@/components/text-link';
-import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -24,10 +23,10 @@ export default function Login({
 }: Props) {
     return (
         <AuthLayout
-            title="Log in to your account"
-            description="Enter your email and password below to log in"
+            title="Masuk ke Akun"
+            description="Masukkan email dan password untuk melanjutkan"
         >
-            <Head title="Log in" />
+            <Head title="Masuk" />
 
             <Form
                 {...store.form()}
@@ -36,9 +35,9 @@ export default function Login({
             >
                 {({ processing, errors }) => (
                     <>
-                        <div className="grid gap-6">
+                        <div className="grid gap-5">
                             <div className="grid gap-2">
-                                <Label htmlFor="email">Email address</Label>
+                                <Label htmlFor="email" className="text-gray-700 font-medium">Alamat Email</Label>
                                 <Input
                                     id="email"
                                     type="email"
@@ -48,20 +47,21 @@ export default function Login({
                                     tabIndex={1}
                                     autoComplete="email"
                                     placeholder="email@example.com"
+                                    className="rounded-lg border-gray-300 focus:border-[#C49A3B] focus:ring-[#C49A3B]"
                                 />
                                 <InputError message={errors.email} />
                             </div>
 
                             <div className="grid gap-2">
                                 <div className="flex items-center">
-                                    <Label htmlFor="password">Password</Label>
+                                    <Label htmlFor="password" className="text-gray-700 font-medium">Password</Label>
                                     {canResetPassword && (
                                         <TextLink
                                             href={request()}
-                                            className="ml-auto text-sm"
+                                            className="ml-auto text-sm text-[#C49A3B] hover:text-[#8B6914]"
                                             tabIndex={5}
                                         >
-                                            Forgot password?
+                                            Lupa password?
                                         </TextLink>
                                     )}
                                 </div>
@@ -73,6 +73,7 @@ export default function Login({
                                     tabIndex={2}
                                     autoComplete="current-password"
                                     placeholder="Password"
+                                    className="rounded-lg border-gray-300 focus:border-[#C49A3B] focus:ring-[#C49A3B]"
                                 />
                                 <InputError message={errors.password} />
                             </div>
@@ -82,28 +83,29 @@ export default function Login({
                                     id="remember"
                                     name="remember"
                                     tabIndex={3}
+                                    className="border-gray-300 data-[state=checked]:bg-[#C49A3B] data-[state=checked]:border-[#C49A3B]"
                                 />
-                                <Label htmlFor="remember">Remember me</Label>
+                                <Label htmlFor="remember" className="text-gray-600">Ingat saya</Label>
                             </div>
 
-                            <Button
+                            <button
                                 type="submit"
-                                className="mt-4 w-full"
+                                className="mt-2 w-full py-3 bg-[#C49A3B] text-white rounded-lg font-medium hover:bg-[#B08A30] transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                                 tabIndex={4}
                                 disabled={processing}
                                 data-test="login-button"
                             >
                                 {processing && <Spinner />}
-                                Log in
-                            </Button>
+                                Masuk
+                            </button>
                         </div>
 
                         {canRegister && (
-                            <div className="text-center text-sm text-muted-foreground">
-                                Don't have an account?{' '}
-                                <TextLink href={register()} tabIndex={5}>
-                                    Sign up
-                                </TextLink>
+                            <div className="text-center text-sm text-gray-600">
+                                Belum punya akun?{' '}
+                                <a href={register.url()} tabIndex={5} className="text-[#C49A3B] hover:text-[#8B6914] font-medium">
+                                    Daftar sekarang
+                                </a>
                             </div>
                         )}
                     </>

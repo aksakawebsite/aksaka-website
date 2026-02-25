@@ -23,43 +23,48 @@ export default function Footer() {
     return (
         <footer className="bg-white py-12 md:py-16 border-t border-gray-100">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 lg:gap-12">
+                <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-16 max-w-6xl mx-auto">
                     {/* Column 1: Map */}
-                    <div className="space-y-4">
-                        <div className="w-full h-48 md:h-56 bg-gray-200 rounded-lg overflow-hidden relative">
-                             {/* Placeholder for Map - In a real scenario, this would be an image or iframe */}
-                             <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                                <span className="text-sm font-medium">Map Representation</span>
-                             </div>
-                             {/* If asset existed: <img src="/image/landing-page/map.png" alt="Location Map" className="w-full h-full object-cover" /> */}
+                    <div className="w-full md:w-80 lg:w-100 shrink-0">
+                        <div className="w-full h-40 bg-gray-200 rounded-lg overflow-hidden">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.4845588428875!2d109.6653235!3d-7.7383146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7ac957ece81a49%3A0xac0ae158b5751c0e!2sUKM%20Perpustakaan%20Digital%20%22Tunas%20Muda%22%20Tambakrejo!5e0!3m2!1sid!2sid!4v1772002485609!5m2!1sid!2sid" 
+                                width="100%" 
+                                height="100%" 
+                                style={{ border: 0 }} 
+                                allowFullScreen 
+                                loading="lazy" 
+                                referrerPolicy="no-referrer-when-downgrade"
+                                title="Location Map"
+                            />
                         </div>
                     </div>
 
                     {/* Column 2: Address */}
-                    <div className="space-y-4">
-                        <h3 className="text-xl font-bold text-gray-900">Address</h3>
-                        <p className="text-gray-600 leading-relaxed">
+                    <div className="w-full md:flex-1 space-y-3">
+                        <h3 className="text-xl font-bold text-[#2D3E50]">Address</h3>
+                        <p className="text-gray-600 leading-relaxed text-sm">
                             Jalan Raya Kepung 250, Desa/Kelurahan Gadungan, Kec. Puncu, Kab. Kediri, Provinsi Jawa Timur, 64292 Indonesia
                         </p>
                     </div>
 
                     {/* Column 3: Contact */}
-                    <div className="space-y-4">
-                        <h3 className="text-xl font-bold text-gray-900">Contact</h3>
-                        <div className="space-y-2 text-gray-600">
+                    <div className="w-full md:w-auto space-y-3">
+                        <h3 className="text-xl font-bold text-[#2D3E50]">Contact</h3>
+                        <div className="space-y-1 text-gray-600 text-sm">
                             <p>0821 2398 2225</p>
-                            <p>info@studyabroadcenterid.com</p>
-                            <p>studyabroadcenterid.com</p>
+                            <p>info@aksaka.com</p>
+                            <p>aksaka.com</p>
                         </div>
                         
-                        <div className="flex items-center space-x-4 pt-4">
-                             <a href="#" className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center text-white hover:bg-gray-700 transition-colors" aria-label="YouTube">
+                        <div className="flex items-center space-x-3 pt-2">
+                             <a href="#" className="w-10 h-10 bg-[#C49A3B] rounded-full flex items-center justify-center text-white hover:bg-[#1E2D3D] transition-colors" aria-label="YouTube">
                                 <Youtube className="w-5 h-5" />
                             </a>
-                            <a href="#" className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center text-white hover:bg-gray-700 transition-colors" aria-label="TikTok">
+                            <a href="#" className="w-10 h-10 bg-[#C49A3B] rounded-full flex items-center justify-center text-white hover:bg-[#1E2D3D] transition-colors" aria-label="TikTok">
                                 <TiktokIcon className="w-5 h-5" />
                             </a>
-                            <a href="#" className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center text-white hover:bg-gray-700 transition-colors" aria-label="Instagram">
+                            <a href="#" className="w-10 h-10 bg-[#C49A3B] rounded-full flex items-center justify-center text-white hover:bg-[#B08A30] transition-colors" aria-label="Instagram">
                                 <Instagram className="w-5 h-5" />
                             </a>
                         </div>
@@ -68,8 +73,8 @@ export default function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="mt-12 md:mt-16 pt-8 border-t border-gray-100 text-center">
-                    <p className="text-gray-500 font-medium tracking-wide">
-                        #YourDreamEducationStartsHere
+                    <p className="text-[#C49A3B] font-medium italic tracking-wide">
+                        #Belajar Lebih Terarah, Berkembang Lebih Cepat
                     </p>
                 </div>
             </div>
