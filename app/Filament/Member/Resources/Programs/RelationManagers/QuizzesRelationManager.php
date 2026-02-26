@@ -1,41 +1,48 @@
 <?php
 
-namespace App\Filament\Member\Resources\Quizzes;
+namespace App\Filament\Member\Resources\Programs\RelationManagers;
 
-use App\Filament\Member\Resources\Quizzes\Pages\ListQuizzes;
 use App\Models\Quiz;
-use BackedEnum;
-use Filament\Resources\Resource;
-use Filament\Support\Icons\Heroicon;
+use Filament\Actions\Action;
+use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class QuizResource extends Resource
+class QuizzesRelationManager extends RelationManager
 {
-    protected static ?string $model = Quiz::class;
+    protected static string $relationship = 'quizzes';
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedClipboardDocumentCheck;
+    protected static ?string $title = 'Quiz & Evaluasi';
 
-    protected static ?string $navigationLabel = 'Quiz & Evaluasi';
+    public function isReadOnly(): bool
+    {
+        return true;
+    }
 
-    protected static ?string $modelLabel = 'Quiz';
+    public function form(Schema $schema): Schema
+    {
+        return $schema->components([]);
+    }
 
-    protected static ?int $navigationSort = 2;
-
-    public static function table(Table $table): Table
+    public function table(Table $table): Table
     {
         return $table
             ->query(
-                Quiz::query()
+                fn () => Quiz::query()
+                    ->where('program_id', $this->getOwnerRecord()->getKey())
                     ->whereNotNull('gform_url')
-                    ->whereHas('program')
-                    ->with('program')
+                    ->orderBy('order')
             )
             ->columns([
-                TextColumn::make('program.title')
-                    ->label('Program')
-                    ->badge()
-                    ->color('info'),
+                TextColumn::make('order')
+                    ->label('#')
+                    ->sortable()
+                    ->width('40px'),
+                TextColumn::make('title')
+                    ->label('Judul Quiz')
+                    ->searchable()
+                    ->wrap(),
                 TextColumn::make('status')
                     ->label('Status')
                     ->badge()
@@ -48,26 +55,24 @@ class QuizResource extends Resource
                         'Selesai' => 'success',
                         default => 'warning',
                     }),
-                TextColumn::make('title')
-                    ->label('Quiz')
-                    ->searchable()
-                    ->weight('bold'),
                 TextColumn::make('description')
                     ->label('Deskripsi')
-                    ->limit(50)
-                    ->wrap(),
+                    ->wrap()
+                    ->limit(80),
             ])
+            ->defaultSort('order')
             ->recordActions([
-                \Filament\Actions\Action::make('take')
+                Action::make('kerjakan')
                     ->label('Kerjakan Quiz')
-                    ->icon('heroicon-o-arrow-top-right-on-square')
-                    ->color('warning')
                     ->url(fn ($record) => $record->gform_url)
-                    ->openUrlInNewTab(),
-                \Filament\Actions\Action::make('complete')
+                    ->openUrlInNewTab()
+                    ->button()
+                    ->color('warning'),
+                Action::make('complete')
                     ->label('✓ Tandai Selesai')
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
+                    ->button()
                     ->visible(fn ($record) => ! \App\Models\UserActivityLog::where('user_id', \Illuminate\Support\Facades\Auth::id())
                         ->where('activity', 'Menyelesaikan quiz: '.$record->title)
                         ->exists())
@@ -84,13 +89,6 @@ class QuizResource extends Resource
                             ->send();
                     }),
             ])
-            ->defaultSort('order', 'asc');
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => ListQuizzes::route('/'),
-        ];
+            ->headerActions([]);
     }
 }

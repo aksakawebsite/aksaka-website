@@ -94,16 +94,10 @@ export default function Navbar() {
                                         </DropdownMenuLabel>
                                         <DropdownMenuSeparator />
                                         <DropdownMenuItem asChild>
-                                            <Link href="/settings/profile" className="cursor-pointer">
-                                                <UserIcon className="mr-2 h-4 w-4" />
-                                                <span>Profile</span>
-                                            </Link>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem asChild>
-                                            <Link href="/settings/appearance" className="cursor-pointer">
+                                            <a href={user.role === 'admin' ? '/admin' : '/member'} className="cursor-pointer flex w-full items-center">
                                                 <Settings className="mr-2 h-4 w-4" />
-                                                <span>Settings</span>
-                                            </Link>
+                                                <span>Dashboard</span>
+                                            </a>
                                         </DropdownMenuItem>
                                         <DropdownMenuSeparator />
                                         <DropdownMenuItem asChild className="text-red-600 focus:text-red-600">
@@ -198,13 +192,13 @@ export default function Navbar() {
                     <div className="mt-4 flex flex-col space-y-3 border-t border-gray-100 pt-4">
                         {user ? (
                              <>
-                                <Link
-                                    href="/settings/profile"
+                                <a
+                                    href={user.role === 'admin' ? '/admin' : '/member'}
                                     className="flex items-center rounded-md px-3 py-3 text-base font-semibold text-gray-600 hover:bg-gray-50 hover:text-primary"
                                 >
-                                    <UserIcon className="mr-2 h-5 w-5" />
-                                    Profile
-                                </Link>
+                                    <Settings className="mr-2 h-5 w-5" />
+                                    Dashboard
+                                </a>
                                 <Link
                                     href={logout.url()}
                                     method="post"

@@ -7,7 +7,10 @@ use App\Filament\Member\Resources\Programs\Pages\ViewProgram;
 use App\Models\Program;
 use BackedEnum;
 use Filament\Actions\ViewAction;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -42,5 +45,21 @@ class ProgramResource extends Resource
             'index' => ListPrograms::route('/'),
             'view' => ViewProgram::route('/{record}'),
         ];
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Section::make('Program Info')
+                    ->schema([
+                        TextEntry::make('title')
+                            ->label('Judul Program')
+                            ->weight('bold'),
+                        TextEntry::make('description')
+                            ->label('Deskripsi'),
+                    ])
+                    ->columns(2),
+            ]);
     }
 }

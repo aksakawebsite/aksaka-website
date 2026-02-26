@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->integer('order')->default(0);
             $table->timestamps();
-            
+
             $table->index('program_id');
         });
     }

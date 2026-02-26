@@ -34,15 +34,14 @@ export function UserMenuContent({ user }: Props) {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
-                    <Link
+                    <a
                         className="block w-full cursor-pointer"
-                        href={edit()}
-                        prefetch
+                        href={user.role === 'admin' ? '/admin' : '/member'}
                         onClick={cleanup}
                     >
-                        <Settings className="mr-2" />
-                        Settings
-                    </Link>
+                        <Settings className="mr-2 inline-block" />
+                        Dashboard
+                    </a>
                 </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />

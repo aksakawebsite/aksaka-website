@@ -6,6 +6,7 @@ use App\Filament\Member\Resources\Materials\MaterialResource;
 use App\Models\UserActivityLog;
 use App\Models\UserMaterialProgress;
 use Filament\Actions\Action;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Page;
 use Illuminate\Support\Facades\Auth;
 
@@ -66,7 +67,11 @@ class ViewMaterial extends Page
                         'activity' => 'Menyelesaikan materi: '.$this->record->title,
                     ]);
 
-                    $this->notify('success', 'Materi berhasil diselesaikan!');
+                    Notification::make()
+                        ->title('Berhasil')
+                        ->body('Materi berhasil diselesaikan!')
+                        ->success()
+                        ->send();
                     $this->redirect(\App\Filament\Member\Resources\Programs\ProgramResource::getUrl('view', ['record' => $this->record->program]));
                 }),
         ];

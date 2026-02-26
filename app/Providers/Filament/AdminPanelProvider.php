@@ -32,7 +32,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogo(asset('image/navbar/logo-aksaka.png'))
             ->darkModeBrandLogo(asset('image/navbar/logo-aksaka.png'))
             ->brandLogoHeight('4rem')
-            ->favicon(asset('favicon.svg'))
+            ->favicon(asset('favicon.ico'))
             ->colors([
                 'primary' => Color::Amber,
                 'danger' => Color::Rose,
@@ -60,6 +60,15 @@ class AdminPanelProvider extends PanelProvider
                 PanelsRenderHook::AUTH_LOGIN_FORM_AFTER,
                 fn (): string => Blade::render('
                     <div class="auth-custom-footer">
+                        <div class="auth-divider">
+                            <span>atau</span>
+                        </div>
+                        <div class="text-center">
+                            <a href="/" class="auth-back-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                                Kembali ke Beranda
+                            </a>
+                        </div>
                         <p class="auth-copyright">
                             © {{ date("Y") }} Aksaka. Hak Cipta Dilindungi.
                         </p>
