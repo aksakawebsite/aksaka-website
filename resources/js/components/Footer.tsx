@@ -44,7 +44,7 @@ export default function Footer() {
                     <div className="w-full md:flex-1 space-y-3">
                         <h3 className="text-xl font-bold text-[#2D3E50]">Address</h3>
                         <p className="text-gray-600 leading-relaxed text-sm">
-                            Jalan Raya Kepung 250, Desa/Kelurahan Gadungan, Kec. Puncu, Kab. Kediri, Provinsi Jawa Timur, 64292 Indonesia
+                            Rante Dua, Tambakrejo, Kec. Buluspesantren, Kabupaten Kebumen, Jawa Tengah 54391
                         </p>
                     </div>
 
@@ -52,8 +52,8 @@ export default function Footer() {
                     <div className="w-full md:w-auto space-y-3">
                         <h3 className="text-xl font-bold text-[#2D3E50]">Contact</h3>
                         <div className="space-y-1 text-gray-600 text-sm">
-                            <p>0821 2398 2225</p>
-                            <p>info@aksaka.com</p>
+                            <p>0812-2527-7635</p>
+                            <p>aksakadigital@gmail.com</p>
                             <p>aksaka.com</p>
                         </div>
                         
